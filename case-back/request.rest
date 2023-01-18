@@ -1,0 +1,39 @@
+### Return Clients
+GET http://localhost:3003/clients
+
+### Return Products
+GET http://localhost:3003/products
+
+### return stock
+GET http://localhost:3003/stock
+
+### create new client
+POST http://localhost:3003/client
+Content-Type: application/json
+
+{
+   "name": "Bruna Santos"
+}
+
+### create order
+POST http://localhost:3003/order
+Content-Type: application/json
+
+{
+   "fk_client": 1,
+   "delivery_date": "2023-01-05",
+   "products":[
+      {
+         "id":1,
+         "qty":15
+      },
+      {
+         "id":2,
+         "qty":90
+      },
+      {
+         "id":3,
+         "qty":40
+      }
+   ]
+}
