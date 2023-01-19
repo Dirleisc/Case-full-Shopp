@@ -5,15 +5,21 @@ import { getAllClients } from "./endpoints/allClients";
 import { getAllProducts } from "./endpoints/allProducts";
 import { createOrder } from "./endpoints/createOrder";
 import { getStock } from "./endpoints/stock";
+import { AddressInfo } from "net";
 
 const app = express();
 
  app.use(express.json());
  app.use(cors());
 
- app.listen(3003,()=> {
-   console.log("Servidor na porta 3003!");
- })
+ const server = app.listen(process.env.PORT || 3003, () => {
+  if(server){
+      const address = server.address() as AddressInfo;
+      console.log(`Server is running in http://localhost:${address.port}`);
+  }else{
+      console.error(`Failure upon starting server.`)
+  }
+})
  
  //retorna todos clientes
  app.get("/clients", getAllClients);
