@@ -14,9 +14,9 @@ export default function Form({ productList, setProductList }) {
    //dados formulaios
    const [form, onChange, restForm] = useForm({ client: '', product: '', qty: 1, deliveryDate: '' })
    //dados cliente
-   const [dataClient, isloadingClient, errorClient, upClient, setUpClient] = useRequestData('http://localhost:3003/clients');
+   const [dataClient, isloadingClient, errorClient, upClient, setUpClient] = useRequestData('https://case-shopp-stack.onrender.com/clients');
    //dados productos
-   const [dataProduct, isloadingProduct, errorProduct] = useRequestData('http://localhost:3003/products');
+   const [dataProduct, isloadingProduct, errorProduct] = useRequestData('https://case-shopp-stack.onrender.com/products');
    //-------------------------> Clientes ------------------------------------->
    //cliente selecionado
    const selectClient = !isloadingClient && dataClient && dataClient.find((dtClient) => {
@@ -28,7 +28,7 @@ export default function Form({ productList, setProductList }) {
       {
          "name": form.client
       }
-      axios.post('http://localhost:3003/client', body, {})
+      axios.post('https://case-shopp-stack.onrender.com/client', body, {})
          .then((res) => {
             setUpClient(!upClient)
             console.log(res);
@@ -71,7 +71,7 @@ export default function Form({ productList, setProductList }) {
               "delivery_date": deliveryDateDb,
               "products": productListDB
           }
-         axios.post("http://localhost:3003/order", body, {})
+         axios.post('https://case-shopp-stack.onrender.com/order', body, {})
             .then((response) => {
                console.log(response);
                goToEndOrder(navigate)
