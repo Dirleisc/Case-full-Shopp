@@ -13,8 +13,8 @@ export default function EndPage() {
     <>
       <Header />
       <MyEndPage>
-        <h1>Pedido Finalizado com Sucesso!</h1>
-        <h2>Obrigado pela Preferência!</h2>
+        <h1>Pedido finalizado com sucesso!</h1>
+        <h2>Obrigado(a) pela preferência!</h2>
       </MyEndPage>
     </>
   );

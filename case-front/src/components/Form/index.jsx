@@ -60,21 +60,20 @@ export default function Form({ productList, setProductList }) {
    const makeOrder = (e) => {
       e.preventDefault();
       if (!productList || !form.deliveryDate || !selectClient) {
-         alert("Confira seu dados!")
+          alert("Confira os dados")
       } else {
-         const deliveryDateDb = `${form.deliveryDate.split('/')[2]}-${form.deliveryDate.split('/')[1]}-${form.deliveryDate.split('/')[0]}`
-         const productListDb = productList.map((prod) => {
-            return { "id": prod.id, "qty": Number(prod.qty) }
-         })
-         const body = {
-            "fk_client": Number(selectClient.id),
-            "delivery_date": deliveryDateDb,
-            "products": productListDb
-
-         }
+          const deliveryDateDb = `${form.deliveryDate.split("/")[2]}-${form.deliveryDate.split("/")[1]}-${form.deliveryDate.split("/")[0]}`
+          const productListDB = productList.map((p) => {
+              return { "id": p.id, "qty": Number(p.qty) }
+          })
+          const body = {
+              "fk_client": Number(selectClient.id),
+              "delivery_date": deliveryDateDb,
+              "products": productListDB
+          }
          axios.post("http://localhost:3003/order", body, {})
-            .then((res) => {
-               console.log(res);
+            .then((response) => {
+               console.log(response);
                goToEndOrder(navigate)
             }
             ).catch((error) => {
